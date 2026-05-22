@@ -48,6 +48,7 @@ export default StyleSheet.create({
     marginBottom: -10,
     alignSelf: 'flex-start',
     marginLeft: 30,
+    color: '#404348'
   },
 
   input: {
@@ -73,45 +74,45 @@ export default StyleSheet.create({
   },
 
   radioContainer: {
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  width: 275,
-},
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: 275,
+  },
 
-option: {
-  flexDirection: 'row',
-  alignItems: 'center',
-},
+  option: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 
-radioText: {
-  fontSize: 24,
-  fontFamily: 'Gurajada',
-  color: '#435E91',
-},
+  radioText: {
+    fontSize: 24,
+    fontFamily: 'Gurajada',
+    color: '#435E91',
+  },
 
-activeText: {
-  color: '#435E91',
-},
+  activeText: {
+    color: '#435E91',
+  },
 
-circle: {
-  width: 16,
-  height: 16,
-  borderRadius: 50,
-  marginLeft: 6,
-},
+  circle: {
+    width: 16,
+    height: 16,
+    borderRadius: 50,
+    marginLeft: 6,
+  },
 
-activeCircle: {
-  backgroundColor: '#435E91',
-},
+  activeCircle: {
+    backgroundColor: '#435E91',
+  },
 
-inactiveCircle: {
-  backgroundColor: '#D1DEF9',
+  inactiveCircle: {
+    backgroundColor: '#D1DEF9',
   },
 
   button: {
-    width: 275,
-    height: 42,
-    backgroundColor: '#435E91',
+    width: 300,
+    height: 50,
+    backgroundColor: '#D3DEF5',
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
@@ -119,9 +120,28 @@ inactiveCircle: {
   },
 
   buttonText: {
-    color: '#fff',
+    color: '#526EAA',
     fontFamily: 'Gurajada',
-    fontSize: 28,
+    fontSize: 48,
   },
 
+  containerCadastro: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 18,
+  },
+
+  textCadastro: {
+    fontFamily: 'Gurajada',
+    fontSize: 24,
+    color: '#404348',
+  },
+
+  cadastrarText: {
+    fontFamily: 'Gurajada',
+    fontSize: 24,
+    color: '#468B5B',
+    marginLeft: 5,
+  },
 });

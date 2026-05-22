@@ -6,8 +6,6 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
-  TextComponent,
-  Image,
   ImageBackground,
 } from 'react-native';
 
@@ -165,6 +163,22 @@ export default function LoginPassageiro({navigation}) {
     </TouchableOpacity>
 
       </View>
+
+      <View style={styles.containerCadastro}>
+  <Text style={styles.textCadastro}>
+    Não tem uma conta?
+  </Text>
+
+  <TouchableOpacity
+    onPress={() =>
+      navigation.navigate('Cadastro')
+    }
+  >
+    <Text style={styles.cadastrarText}>
+      Cadastrar
+    </Text>
+  </TouchableOpacity>
+</View>
       </ImageBackground>
     </View>
   );
