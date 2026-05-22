@@ -15,9 +15,9 @@ export default function CadastroPassageiro({ navigation }) {
   const [telefone, setTelefone] = useState('');
 
   function cadastrar() {
-    if (!nome || !telefone) {
+    /*if (!nome || !telefone) {
       return Alert.alert('Preencha todos os campos');
-    }
+    } */
 
     Alert.alert('Passageiro cadastrado!');
 

@@ -18,7 +18,7 @@ export default function Inicial({ navigation }) {
       <TouchableOpacity
         style={styles.buttonLoginPassageiro}
         onPress={() =>
-          navigation.navigate('CadastroPassageiro')
+          navigation.navigate('LoginPassageiro')
         }
       >
         <Text style={styles.buttonTextLoginPassageiro}>
@@ -29,7 +29,7 @@ export default function Inicial({ navigation }) {
       <TouchableOpacity
         style={styles.buttonLoginMotorista}
         onPress={() =>
-          navigation.navigate('CadastroPassageiro')
+          navigation.navigate('LoginPassageiro')
         }
       >
         <Text style={styles.buttonTextLoginMotorista}>

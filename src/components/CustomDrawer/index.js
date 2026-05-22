@@ -18,6 +18,7 @@ export default function CustomDrawer(props) {
           Meu Aplicativo
         </Text>
 
+
         <TouchableOpacity
           style={styles.button}
           onPress={() =>
@@ -28,6 +29,7 @@ export default function CustomDrawer(props) {
             Home
           </Text>
         </TouchableOpacity>
+
 
         <TouchableOpacity
           style={styles.button}
@@ -40,18 +42,30 @@ export default function CustomDrawer(props) {
           </Text>
         </TouchableOpacity>
 
+
         <TouchableOpacity
           style={styles.button}
           onPress={() =>
-            props.navigation.navigate(
-              'CadastroPassageiro'
-            )
+            props.navigation.navigate('CadastroPassageiro')
           }
         >
           <Text style={styles.buttonText}>
             Cadastro
           </Text>
         </TouchableOpacity>
+
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() =>
+            props.navigation.navigate('LoginPassageiro')
+          }
+        >
+  <Text style={styles.buttonText}>
+    Login
+  </Text>
+</TouchableOpacity>
+
 
       </View>
     </DrawerContentScrollView>

@@ -4,6 +4,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Inicial from '../screens/Inicial';
 import CadastroPassageiro from '../screens/CadastroPassageiro';
 import Home from '../screens/Home';
+import LoginPassageiro  from '../screens/LoginPassageiro';
 
 import CustomDrawer from '../components/CustomDrawer';
 
@@ -20,7 +21,7 @@ export default function DrawerRoutes() {
           backgroundColor: '#004cff',
         },
 
-        headerTintColor: '#fff',
+        headerTintColor: '#ffffffff',
 
         drawerStyle: {
           backgroundColor: '#5e0303',
@@ -39,6 +40,7 @@ export default function DrawerRoutes() {
         options={{
           headerLeft: () => null,
           swipeEnabled: false,
+          headerShown: false
         }}
       />
 
@@ -48,8 +50,20 @@ export default function DrawerRoutes() {
         options={{
           headerLeft: () => null,
           swipeEnabled: false,
+          headerShown: false
         }}
       />
+
+      <Drawer.Screen
+        name="LoginPassageiro"
+        component={LoginPassageiro}
+        options={{
+          headerLeft: () => null,
+          swipeEnabled: false,
+          headerShown: false
+        }}
+      />
+
     </Drawer.Navigator>
   );
 }

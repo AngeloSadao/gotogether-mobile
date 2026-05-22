@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Inicial from '../screens/Inicial';
 import CadastroPassageiro from '../screens/CadastroPassageiro';;
+import LoginPassageiro from '../screens/LoginPassageiro';
 
 import DrawerRoutes from './drawer.routes';
 
@@ -25,8 +26,15 @@ export default function StackRoutes() {
       />
 
       <Stack.Screen
+        name="LoginPassageiro"
+        component={LoginPassageiro}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
         name="Home"
         component={DrawerRoutes}
+        headerShown
         options={{ headerShown: false }}
       />
 

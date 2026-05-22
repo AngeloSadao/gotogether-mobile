@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@expo-google-fonts/jost": "^0.4.2",
+    "@expo/vector-icons": "^15.0.2",
     "@react-navigation/drawer": "^7.9.4",
     "@react-navigation/native": "^7.1.33",
     "@react-navigation/native-stack": "^7.14.4",
@@ -17,6 +18,7 @@
     "axios": "^1.13.6",
     "expo": "~55.0.5",
     "expo-app-loading": "^2.1.1",
+    "expo-font": "~55.0.4",
     "expo-linear-gradient": "^55.0.14",
     "expo-status-bar": "~55.0.4",
     "react": "19.2.0",
@@ -25,6 +27,7 @@
     "react-native-circular-progress": "^1.4.1",
     "react-native-flash-message": "^0.4.2",
     "react-native-gesture-handler": "~2.30.0",
+    "react-native-paper": "^5.15.2",
     "react-native-reanimated": "4.2.1",
     "react-native-safe-area-context": "~5.6.2",
     "react-native-screens": "~4.23.0",
