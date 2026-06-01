@@ -86,6 +86,7 @@ export default function LoginPassageiro({navigation}) {
           />
         </TouchableOpacity>
       </View>
+      <TouchableOpacity>
       <Text
       style={{
         fontFamily: 'Gurajada',
@@ -96,6 +97,7 @@ export default function LoginPassageiro({navigation}) {
       }}>
       Esqueci minha senha
       </Text>
+      </TouchableOpacity>
 
       <View style={styles.radioContainer}>
   {/* PASSAGEIRO */}

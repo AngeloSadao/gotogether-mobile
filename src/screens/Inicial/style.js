@@ -23,6 +23,7 @@ export default StyleSheet.create({
     fontSize: 48,
     fontFamily: 'Gurajada',
     marginBottom: -60,
+    userSelect: 'none',
   },
 
   title2: {
@@ -31,6 +32,7 @@ export default StyleSheet.create({
     fontSize: 48,
     fontFamily: 'Gurajada',
     marginBottom: -60,
+    userSelect: 'none',
   },
 
   title3: {
@@ -39,6 +41,7 @@ export default StyleSheet.create({
     fontSize: 48,
     fontFamily: 'Gurajada',
     marginBottom: -25,
+    userSelect: 'none',
   },
 
   subtitle:{
@@ -47,6 +50,7 @@ export default StyleSheet.create({
     fontSize: 20,
     fontFamily: 'Gurajada',
     marginBottom: -25,
+    userSelect: 'none',
   },
 
   subtitle2:{
@@ -54,6 +58,7 @@ export default StyleSheet.create({
     alignSelf: 'center',
     fontSize: 20,
     fontFamily: 'Gurajada',
+    userSelect: 'none',
   },
 
   buttonPassageiro: {
@@ -95,6 +100,7 @@ export default StyleSheet.create({
     alignSelf: 'flex-start',
     marginLeft: 8,
     color: '#526EAA',
+    userSelect: 'none',
   },
 
   text2Passageiro: {
@@ -104,6 +110,7 @@ export default StyleSheet.create({
     alignSelf: 'flex-start',
     marginLeft: 8,
     color: '#404348',
+    userSelect: 'none',
   },
 
   buttonMotorista: {
@@ -145,6 +152,7 @@ export default StyleSheet.create({
     alignSelf: 'flex-start',
     marginLeft: 8,
     color: '#468B5B',
+    userSelect: 'none',
   },
 
   text2Motorista: {
@@ -154,17 +162,12 @@ export default StyleSheet.create({
     alignSelf: 'flex-start',
     marginLeft: 8,
     color: '#404348',
+    userSelect: 'none',
   },
 
   containerTextButton: {
     alignItems: 'center',
     justifyContent: 'center',
-  },
-
-  buttonText: {
-    color: '#526EAA',
-    fontFamily: 'Gurajada',
-    fontSize: 48,
   },
 
   containerLogar: {

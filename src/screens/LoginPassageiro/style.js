@@ -23,14 +23,17 @@ export default StyleSheet.create({
     fontSize: 45,
     fontFamily: 'Gurajada',
     marginBottom: -50,
+    userSelect: 'none',
   },
+
   title2: {
     color: '#7AC992',
     alignSelf: 'center',
     fontSize: 30,
     fontFamily: 'Gurajada',
-   
+    userSelect: 'none',
   },
+
   containerInput: {
     borderRadius: 18,
     borderColor: '#e9e9e9ff',
@@ -42,13 +45,15 @@ export default StyleSheet.create({
     alignContent: 'center',
     alignItems: 'center',
   },
+
   text: {
     fontFamily: 'Gurajada',
     fontSize: 24,
     marginBottom: -10,
     alignSelf: 'flex-start',
     marginLeft: 30,
-    color: '#404348'
+    color: '#404348',
+    userSelect: 'none',
   },
 
   input: {
