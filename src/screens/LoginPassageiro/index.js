@@ -32,7 +32,7 @@ export default function LoginPassageiro({navigation}) {
     setEmail('');
     setSenha('');
 
-    navigation.navigate('Home');
+    navigation.navigate('HomePassageiro');
   }
 
   return (

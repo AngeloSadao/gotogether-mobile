@@ -3,7 +3,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import Inicial from '../screens/Inicial';
 import CadastroPassageiro from '../screens/CadastroPassageiro';
-import Home from '../screens/Home';
+import HomePassageiro from '../screens/HomePassageiro';
 import LoginPassageiro  from '../screens/LoginPassageiro';
 
 import CustomDrawer from '../components/CustomDrawer';
@@ -30,8 +30,8 @@ export default function DrawerRoutes() {
       }}
     >
       <Drawer.Screen
-        name="Home"
-        component={Home}
+        name="HomePassageiro"
+        component={HomePassageiro}
       />
 
       <Drawer.Screen

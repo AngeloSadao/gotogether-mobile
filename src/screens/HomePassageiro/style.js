@@ -62,4 +62,23 @@ container: {
     padding: 10,
     borderRadius: 8,
   },
+
+  input: {
+   width: '90%',
+    height: 45,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    marginTop: 10,
+    backgroundColor: '#fff',
+  },
+
+  mapContainer: {
+    width: '90%',
+    height: 350,
+    marginTop: 20,
+    borderRadius: 20,
+    overflow: 'hidden',
+  },
 });

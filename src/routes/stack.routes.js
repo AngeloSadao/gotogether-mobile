@@ -32,7 +32,7 @@ export default function StackRoutes() {
       />
 
       <Stack.Screen
-        name="Home"
+        name="HomePassageiro"
         component={DrawerRoutes}
         headerShown
         options={{ headerShown: false }}
