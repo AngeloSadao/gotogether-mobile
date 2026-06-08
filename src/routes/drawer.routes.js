@@ -17,12 +17,6 @@ export default function DrawerRoutes() {
         <CustomDrawer {...props} />
       )}
       screenOptions={{
-        headerStyle: {
-          backgroundColor: '#004cff',
-        },
-
-        headerTintColor: '#ffffffff',
-
         drawerStyle: {
           backgroundColor: '#5e0303',
           width: 260,
@@ -32,6 +26,7 @@ export default function DrawerRoutes() {
       <Drawer.Screen
         name="HomePassageiro"
         component={HomePassageiro}
+        options={{headerShown: false}}
       />
 
       <Drawer.Screen

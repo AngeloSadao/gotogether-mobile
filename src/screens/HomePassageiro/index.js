@@ -1,26 +1,20 @@
-import React, {
-  useEffect,
-  useState
-} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import {
   View,
   Text,
   TouchableOpacity,
-  Modal,
-  TextInput
+  Animated,
 } from 'react-native';
 
 import 'leaflet/dist/leaflet.css';
+import { useNavigation } from '@react-navigation/native';
 
 import L from 'leaflet';
 
 import {
   MapContainer,
   TileLayer,
-  Marker,
-  Popup,
-  Polyline
 } from 'react-leaflet';
 
 import styles from './style';
@@ -34,210 +28,94 @@ const icon = new L.Icon({
     'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
 
   iconSize: [25, 41],
-  iconAnchor: [12, 41]
+  iconAnchor: [12, 41],
 });
 
 export default function HomePassageiro() {
-  const [modalVisible, setModalVisible] =
-    useState(true);
 
-  const [origemTexto, setOrigemTexto] =
-    useState('');
+  const [etapa, setEtapa] = useState(1);
 
-  const [destinoTexto, setDestinoTexto] =
-    useState('');
+  const navigation = useNavigation();
 
-  const [origem, setOrigem] =
-    useState(null);
+  const slideAnim = useRef(
+    new Animated.Value(300)
+  ).current;
 
-  const [destino, setDestino] =
-    useState(null);
+  useEffect(() => {
+    Animated.timing(slideAnim, {
+      toValue: 0,
+      duration: 400,
+      useNativeDriver: true,
+    }).start();
+  }, []);
 
-  const [rota, setRota] =
-    useState([]);
+  function abrirEtapa2() {
 
-  async function buscarLocal(
-    texto,
-    tipo
-  ) {
-    if (!texto) return;
+    Animated.timing(slideAnim, {
+      toValue: 300,
+      duration: 250,
+      useNativeDriver: true,
+    }).start(() => {
 
-    try {
-      const resposta =
-        await fetch(
-          `https://nominatim.openstreetmap.org/search?format=json&q=${texto}&countrycodes=br`
-        );
+      setEtapa(2);
 
-      const dados =
-        await resposta.json();
+      slideAnim.setValue(300);
 
-      if (dados.length > 0) {
-        const coord = [
-          parseFloat(dados[0].lat),
-          parseFloat(dados[0].lon)
-        ];
+      Animated.timing(slideAnim, {
+        toValue: 0,
+        duration: 250,
+        useNativeDriver: true,
+      }).start();
 
-        if (tipo === 'origem') {
-          setOrigem(coord);
-        } else {
-          setDestino(coord);
-        }
-      }
-    } catch (erro) {
-      console.log(erro);
-    }
-  }
-
-  async function calcularRota() {
-    if (!origem || !destino)
-      return;
-
-    const url =
-      'https://router.project-osrm.org/route/v1/driving/' +
-      origem[1] +
-      ',' +
-      origem[0] +
-      ';' +
-      destino[1] +
-      ',' +
-      destino[0] +
-      '?overview=full&geometries=geojson';
-
-    const resposta =
-      await fetch(url);
-
-    const dados =
-      await resposta.json();
-
-    if (dados.routes.length > 0) {
-      const route =
-        dados.routes[0];
-
-      const coords =
-        route.geometry.coordinates;
-
-      const latlngs =
-        coords.map(c => [
-          c[1],
-          c[0]
-        ]);
-
-      setRota(latlngs);
-    }
+    });
   }
 
   return (
     <View style={styles.container}>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() =>
-          setModalVisible(true)
-        }
-      >
-        <Text style={styles.buttonText}>
-          Abrir modal
-        </Text>
-      </TouchableOpacity>
-
-      {/* INPUT ORIGEM */}
-      <TextInput
-        placeholder="Digite a origem"
-        value={origemTexto}
-        onChangeText={
-          setOrigemTexto
-        }
-        onBlur={() =>
-          buscarLocal(
-            origemTexto,
-            'origem'
-          )
-        }
-        style={styles.input}
-      />
-
-      {/* INPUT DESTINO */}
-      <TextInput
-        placeholder="Digite destino"
-        value={destinoTexto}
-        onChangeText={
-          setDestinoTexto
-        }
-        onBlur={() =>
-          buscarLocal(
-            destinoTexto,
-            'destino'
-          )
-        }
-        style={styles.input}
-      />
-
-      <TouchableOpacity
-        style={styles.button}
-        onPress={calcularRota}
-      >
-        <Text style={styles.buttonText}>
-          Buscar rota
-        </Text>
-      </TouchableOpacity>
-
       {/* MAPA */}
       <View style={styles.mapContainer}>
         <MapContainer
-          center={[-24.6, -47.6]}
-          zoom={7}
-          style={{
+          center = {[-24.4979, -47.8449]}
+          zoomControl = {false}
+          attributionControl = {false}
+          zoom = {16}
+          style = {{
             width: '100%',
-            height: '100%'
+            height: '100%',
           }}
         >
-          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-
-          {origem && (
-            <Marker
-              position={origem}
-              icon={icon}
-            >
-              <Popup>
-                Origem
-              </Popup>
-            </Marker>
-          )}
-
-          {destino && (
-            <Marker
-              position={destino}
-              icon={icon}
-            >
-              <Popup>
-                Destino
-              </Popup>
-            </Marker>
-          )}
-
-          {rota.length > 0 && (
-            <Polyline
-              positions={rota}
-              color="blue"
-            />
-          )}
+          <TileLayer
+            url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+          />
         </MapContainer>
       </View>
 
-      {/* MODAL */}
-      <Modal
-        visible={modalVisible}
-        transparent
-        animationType="slide"
+      <TouchableOpacity
+        style={styles.menuButton}
+        onPress={() => navigation.openDrawer()}
       >
-        <View style={styles.overlay}>
-          <View
-            style={
-              styles.modalContainer
-            }
-          >
+        <Text style={styles.menuIcon}>☰</Text>
+      </TouchableOpacity>
+
+      {/* PAINEL INFERIOR */}
+      <Animated.View
+        style={[
+          styles.bottomSheet,
+          {
+            transform: [
+              {
+                translateY: slideAnim,
+              },
+            ],
+          },
+        ]}
+      >
+
+        {etapa === 1 && (
+          <>
             <Text style={styles.title}>
-              Olá, Thissyane
+              Olá, Thissiany!
             </Text>
 
             <Text style={styles.text}>
@@ -245,30 +123,46 @@ export default function HomePassageiro() {
             </Text>
 
             <Text style={styles.text2}>
-              Para onde você vai?
+              Para onde vai?
             </Text>
 
             <TouchableOpacity
-              style={
-                styles.closeButton
-              }
-              onPress={() =>
-                setModalVisible(
-                  false
-                )
-              }
+              style={styles.button}
+              onPress={abrirEtapa2}
             >
-              <Text
-                style={{
-                  color: '#fff'
-                }}
-              >
-                Fechar
+              <Text style={styles.buttonText}>
+                Digite aqui
               </Text>
             </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
+          </>
+        )}
+
+        {etapa === 2 && (
+          <>
+            <Text style={styles.text}>
+              Etapa 2
+            </Text>
+
+            <Text>
+              Aqui entrarão:
+            </Text>
+
+            <Text>
+              • Origem
+            </Text>
+
+            <Text>
+              • Destino
+            </Text>
+
+            <Text>
+              • Preferências
+            </Text>
+          </>
+        )}
+
+      </Animated.View>
+
     </View>
   );
 }

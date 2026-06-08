@@ -3,8 +3,6 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
 container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#fafafa',
   },
 
@@ -18,20 +16,16 @@ container: {
     color: '#fff',
   },
 
-  overlay: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-
-  modalContainer: {
-    height: '25%',
+  bottomSheet: {
+    position: 'absolute',
+    bottom: 0,
     width: '100%',
+    minHeight: 220,
     backgroundColor: '#fff',
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
-    borderColor: '#526EAA',
     borderTopWidth: 10,
+    borderColor: '#435E91',
     padding: 20,
     alignItems: 'center',
   },
@@ -57,28 +51,23 @@ container: {
     userSelect: 'none',
   },
 
-  closeButton: {
-    backgroundColor: '#435E91',
-    padding: 10,
-    borderRadius: 8,
-  },
-
-  input: {
-   width: '90%',
-    height: 45,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 10,
-    paddingHorizontal: 10,
-    marginTop: 10,
-    backgroundColor: '#fff',
-  },
-
   mapContainer: {
-    width: '90%',
-    height: 350,
-    marginTop: 20,
-    borderRadius: 20,
+    width: '100%',
+    height: '100%',
     overflow: 'hidden',
+  },
+
+  menuButton: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    zIndex: 1000,
+    padding: 10,
+    borderRadius: 10,
+  },
+
+  menuIcon: {
+    fontSize: 40,
+    color: '#435E91',
   },
 });
