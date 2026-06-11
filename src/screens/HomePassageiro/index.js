@@ -72,7 +72,7 @@ export default function HomePassageiro() {
   const alturaPainel = {
   1: 220,
   2: 450,
-  3: 450,
+  3: 550,
   }[etapa];
 
 const fechadoY = alturaAnim._value - 50;
@@ -84,7 +84,7 @@ const fechadoY = alturaAnim._value - 50;
   const novaAltura = {
     1: 220,
     2: 450,
-    3: 450,
+    3: 550,
   }[novaEtapa];
 
   Animated.timing(fadeAnim, {

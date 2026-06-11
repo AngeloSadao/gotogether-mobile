@@ -6,55 +6,281 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
+  ScrollView,
+  ImageBackground,
 } from 'react-native';
 
+import { Ionicons } from '@expo/vector-icons';
 import styles from './style';
 
 export default function CadastroPassageiro({ navigation }) {
-  const [nome, setNome] = useState('');
-  const [telefone, setTelefone] = useState('');
 
-  function cadastrar() {
-    /*if (!nome || !telefone) {
-      return Alert.alert('Preencha todos os campos');
-    } */
+  const [nomeCompletoPassageiro, setNomeCompletoPassageiro] = useState('');
+  const [cpfPassageiro, setCpfPassageiro] = useState('');
+  const [telefonePassageiro, setTelefonePassageiro] = useState('');
+  const [emailPassageiro, setEmailPassageiro] = useState('');
+  const [ruaPassageiro, setRuaPassageiro] = useState('');
+  const [complementoEnderecoPassageiro, setComplementoEnderecoPassageiro] = useState('');
+  const [numeroEnderecoPassageiro, setNumeroEnderecoPassageiro] = useState('');
+  const [bairroPassageiro, setBairroPassageiro] = useState('');
+  const [cidadePassageiro, setCidadePassageiro] = useState('');
+  const [estadoPassageiro, setEstadoPassageiro] = useState('');
+  const [cepPassageiro, setCepPassageiro] = useState('');
+  const [dataNascimentoPassageiro, setDataNascimentoPassageiro] = useState('');
+  const [senhaPassageiro, setSenhaPassageiro] = useState('');
 
-    Alert.alert('Passageiro cadastrado!');
+  const [showPassword, setShowPassword] = useState(false);
 
-    setNome('');
-    setTelefone('');
+  async function cadastrar() {
 
-    navigation.navigate('Home');
+    try {
+
+      const response = await fetch(
+        'http://localhost/appTcc/salvarPassageiro.php',
+        {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+
+          body: JSON.stringify({
+
+            nomeCompletoPassageiro,
+            cpfPassageiro,
+            telefonePassageiro,
+            emailPassageiro,
+            ruaPassageiro,
+            numeroEnderecoPassageiro,
+            complementoEnderecoPassageiro,
+            bairroPassageiro,
+            cidadePassageiro,
+            estadoPassageiro,
+            cepPassageiro,
+            dataNascimentoPassageiro,
+            senhaPassageiro
+
+          })
+
+        }
+      );
+
+      const texto = await response.text();
+
+      console.log(texto);
+
+      Alert.alert(texto);;
+
+      setNomeCompletoPassageiro('');
+      setCpfPassageiro('');
+      setTelefonePassageiro('');
+      setEmailPassageiro('');
+      setRuaPassageiro('');
+      setComplementoEnderecoPassageiro('');
+      setNumeroEnderecoPassageiro('');
+      setBairroPassageiro('');
+      setCidadePassageiro('');
+      setEstadoPassageiro('');
+      setCepPassageiro('');
+      setDataNascimentoPassageiro('');
+      setSenhaPassageiro('');
+
+      navigation.navigate('HomePassageiro');
+
+    } catch (error) {
+
+      console.log(error);
+
+      Alert.alert(
+        'Erro',
+        'Não foi possível conectar ao servidor'
+      );
+
+    }
+
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>
-        Cadastro de Passageiro
-      </Text>
 
-      <TextInput
-        style={styles.input}
-        placeholder="Nome"
-        value={nome}
-        onChangeText={setNome}
-      />
+    <ImageBackground
+      source={require('../../../assets/backgroundCadastroGoTogether.png')}
+      style={styles.container}
+      resizeMode="cover"
+    >
 
-      <TextInput
-        style={styles.input}
-        placeholder="Telefone"
-        value={telefone}
-        onChangeText={setTelefone}
-      />
+      <View style={styles.overlay}>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={cadastrar}
-      >
-        <Text style={styles.buttonText}>
-          Cadastrar
-        </Text>
-      </TouchableOpacity>
-    </View>
+        <ScrollView
+          contentContainerStyle={{ paddingBottom: 30 }}
+          showsVerticalScrollIndicator={false}
+        >
+
+          <Text style={styles.title}>
+            Vamos começar?
+          </Text>
+
+          <Text style={styles.subtitle}>
+            Preencha seus dados:
+          </Text>
+
+          <TextInput
+            style={styles.input}
+            placeholder="Nome Completo"
+            placeholderTextColor="#7D9BE6"
+            value={nomeCompletoPassageiro}
+            onChangeText={setNomeCompletoPassageiro}
+          />
+
+          <TextInput
+            style={styles.input}
+            placeholder="CPF"
+            placeholderTextColor="#7D9BE6"
+            value={cpfPassageiro}
+            onChangeText={setCpfPassageiro}
+          />
+
+          <TextInput
+            style={styles.input}
+            placeholder="Telefone"
+            placeholderTextColor="#7D9BE6"
+            value={telefonePassageiro}
+            onChangeText={setTelefonePassageiro}
+          />
+
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+            placeholderTextColor="#7D9BE6"
+            value={emailPassageiro}
+            onChangeText={setEmailPassageiro}
+          />
+
+          <TextInput
+            style={styles.input}
+            placeholder="Rua"
+            placeholderTextColor="#7D9BE6"
+            value={ruaPassageiro}
+            onChangeText={setRuaPassageiro}
+          />
+
+          <TextInput
+            style={styles.input}
+            placeholder="Complemento"
+            placeholderTextColor="#7D9BE6"
+            value={complementoEnderecoPassageiro}
+            onChangeText={setComplementoEnderecoPassageiro}
+          />
+
+          <TextInput
+            style={styles.input}
+            placeholder="Número"
+            placeholderTextColor="#7D9BE6"
+            value={numeroEnderecoPassageiro}
+            onChangeText={setNumeroEnderecoPassageiro}
+          />
+
+          <TextInput
+            style={styles.input}
+            placeholder="Bairro"
+            placeholderTextColor="#7D9BE6"
+            value={bairroPassageiro}
+            onChangeText={setBairroPassageiro}
+          />
+
+          <TextInput
+            style={styles.input}
+            placeholder="Cidade"
+            placeholderTextColor="#7D9BE6"
+            value={cidadePassageiro}
+            onChangeText={setCidadePassageiro}
+          />
+
+          <TextInput
+            style={styles.input}
+            placeholder="Estado"
+            placeholderTextColor="#7D9BE6"
+            value={estadoPassageiro}
+            onChangeText={setEstadoPassageiro}
+          />
+
+          <TextInput
+            style={styles.input}
+            placeholder="CEP"
+            placeholderTextColor="#7D9BE6"
+            value={cepPassageiro}
+            onChangeText={setCepPassageiro}
+          />
+
+          <TextInput
+            style={styles.input}
+            placeholder="Data de Nascimento"
+            placeholderTextColor="#7D9BE6"
+            value={dataNascimentoPassageiro}
+            onChangeText={setDataNascimentoPassageiro}
+          />
+
+          <View style={styles.inputContainer}>
+
+            <TextInput
+              style={styles.inputSenha}
+              placeholder="Senha"
+              placeholderTextColor="#7D9BE6"
+              value={senhaPassageiro}
+              onChangeText={setSenhaPassageiro}
+              secureTextEntry={!showPassword}
+            />
+
+            <TouchableOpacity
+              onPress={() => setShowPassword(!showPassword)}
+            >
+
+              <Ionicons
+                name={showPassword ? 'eye-off-outline' : 'eye-outline'}
+                size={24}
+                color="#6C92E6"
+              />
+
+            </TouchableOpacity>
+
+          </View>
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={cadastrar}
+          >
+
+            <Text style={styles.buttonText}>
+              Cadastrar
+            </Text>
+
+          </TouchableOpacity>
+
+          <View style={styles.containerLogar}>
+
+            <Text style={styles.textLogar}>
+              Já tem uma conta?
+            </Text>
+
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate('LoginPassageiro')
+              }
+            >
+
+              <Text style={styles.logarText}>
+                Entrar
+              </Text>
+
+            </TouchableOpacity>
+
+          </View>
+
+        </ScrollView>
+
+      </View>
+
+    </ImageBackground>
+
   );
+
 }
