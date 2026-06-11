@@ -1,5 +1,4 @@
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Inicial from '../screens/Inicial';
 import CadastroPassageiro from '../screens/CadastroPassageiro';;
@@ -7,11 +6,27 @@ import LoginPassageiro from '../screens/LoginPassageiro';
 
 import DrawerRoutes from './drawer.routes';
 
-const Stack = createNativeStackNavigator();
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
 
 export default function StackRoutes() {
   return (
-    <Stack.Navigator initialRouteName="Inicial">
+    <Stack.Navigator
+      initialRouteName="Inicial"
+      screenOptions={{
+        headerShown: false,
+        transitionSpec: {
+          open: { animation: 'timing', config: { duration: 400 } },
+          close: { animation: 'timing', config: { duration: 400 } },
+        },
+        cardStyleInterpolator: ({ current }) => ({
+          cardStyle: {
+            opacity: current.progress,
+          },
+        }),
+      }}
+    > 
 
       <Stack.Screen
         name="Inicial"

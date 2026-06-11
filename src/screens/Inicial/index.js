@@ -41,7 +41,7 @@ export default function Inicial({navigation}) {
 
 
       <TouchableOpacity 
-      onPress={() => navigation.navigate('Cadastro')}
+      onPress={() => navigation.navigate('CadastroPassageiro')}
       style={styles.buttonPassageiro}>
         <View style={{flexDirection: 'row',}}>
           <View style={styles.backgroundIconPassageiro}>

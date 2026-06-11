@@ -1,26 +1,40 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-container: {
+
+  // GERAL
+  container: {
     flex: 1,
     backgroundColor: '#fafafa',
   },
 
-  button: {
-    backgroundColor: '#435E91',
-    padding: 15,
+  // MAPA
+  mapContainer: {
+    width: '100%',
+    height: '100%',
+    overflow: 'hidden',
+  },
+
+  // DRAWER
+  menuButton: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    zIndex: 1000,
+    padding: 10,
     borderRadius: 10,
   },
 
-  buttonText: {
-    color: '#fff',
+  menuIcon: {
+    fontSize: 40,
+    color: '#435E91',
   },
 
+  // PAINEL INFERIOR
   bottomSheet: {
     position: 'absolute',
     bottom: 0,
     width: '100%',
-    minHeight: 220,
     backgroundColor: '#fff',
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
@@ -30,6 +44,15 @@ container: {
     alignItems: 'center',
   },
 
+  dragHandle: {
+    width: 60,
+    height: 6,
+    borderRadius: 10,
+    backgroundColor: '#d0d0d0',
+    marginBottom: 5,
+  },
+
+  // PAINEL - ETAPA 1
   title: {
     marginTop: -30,
     fontSize: 64,
@@ -51,23 +74,66 @@ container: {
     userSelect: 'none',
   },
 
-  mapContainer: {
-    width: '100%',
-    height: '100%',
-    overflow: 'hidden',
+  // PAINEL - ETAPA 2
+  labelInput: {
+    fontSize: 18,
+    fontFamily: 'Gurajada',
+    alignSelf: 'flex-start',
+    marginTop: 8,
+    color: '#333',
   },
 
-  menuButton: {
-    position: 'absolute',
-    top: 10,
-    left: 10,
-    zIndex: 1000,
-    padding: 10,
+  inputField: {
+    borderWidth: 1,
+    borderColor: '#468B5B',
+    borderRadius: 8,
+    padding: 8,
+    width: '100%',
+    marginBottom: 4,
+    fontSize: 16,
+    fontFamily: 'Gurajada',
+  },
+
+  checkboxRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+    marginBottom: 4,
+  },
+
+  checkboxLabel: {
+    fontSize: 16,
+    fontFamily: 'Gurajada',
+    color: '#333',
+  },
+
+  checkboxAtivo: {
+    width: 20,
+    height: 20,
+    borderRadius: 4,
+    backgroundColor: '#468B5B',
+    borderWidth: 1,
+    borderColor: '#468B5B',
+  },
+
+  checkboxInativo: {
+    width: 20,
+    height: 20,
+    borderRadius: 4,
+    borderWidth: 1,
+    borderColor: '#aaa',
+  },
+
+  // BOTÕES
+  button: {
+    backgroundColor: '#435E91',
+    padding: 15,
     borderRadius: 10,
   },
 
-  menuIcon: {
-    fontSize: 40,
-    color: '#435E91',
+  buttonText: {
+    color: '#fff',
   },
+
 });
