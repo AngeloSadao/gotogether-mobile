@@ -125,6 +125,22 @@ export default StyleSheet.create({
     borderColor: '#aaa',
   },
 
+  // PAINEL - ETAPA 3
+  infoRow: {
+    borderWidth: 1,
+    borderColor: '#435E91',
+    borderRadius: 8,
+    padding: 8,
+    width: '100%',
+    marginBottom: 4,
+  },
+
+  infoText: {
+    fontSize: 16,
+    fontFamily: 'Gurajada',
+    color: '#333',
+  },
+
   // BOTÕES
   button: {
     backgroundColor: '#435E91',
