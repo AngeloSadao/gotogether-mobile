@@ -1,10 +1,7 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import Inicial from '../screens/Inicial';
-import CadastroPassageiro from '../screens/CadastroPassageiro';
 import HomePassageiro from '../screens/HomePassageiro';
-import LoginPassageiro  from '../screens/LoginPassageiro';
 
 import CustomDrawer from '../components/CustomDrawer';
 
@@ -27,36 +24,6 @@ export default function DrawerRoutes() {
         name="HomePassageiro"
         component={HomePassageiro}
         options={{headerShown: false}}
-      />
-
-      <Drawer.Screen
-        name="Inicial"
-        component={Inicial}
-        options={{
-          headerLeft: () => null,
-          swipeEnabled: false,
-          headerShown: false
-        }}
-      />
-
-      <Drawer.Screen
-        name="CadastroPassageiro"
-        component={CadastroPassageiro}
-        options={{
-          headerLeft: () => null,
-          swipeEnabled: false,
-          headerShown: false
-        }}
-      />
-
-      <Drawer.Screen
-        name="LoginPassageiro"
-        component={LoginPassageiro}
-        options={{
-          headerLeft: () => null,
-          swipeEnabled: false,
-          headerShown: false
-        }}
       />
 
     </Drawer.Navigator>

@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Animated,
   PanResponder,
+  Easing,
 } from 'react-native';
 
 import 'leaflet/dist/leaflet.css';
@@ -69,31 +70,30 @@ export default function HomePassageiro() {
   ).current;
 
 
-  const alturaPainel = {
-  1: 220,
-  2: 450,
-  3: 550,
-  }[etapa];
+  const alturas = {
+    1: 220,
+    2: 450,
+    3: 550,
+  };
 
-const fechadoY = alturaAnim._value - 50;
+  const alturaVisivel = 50;
+
+  const fechadoY = alturas[etapa] - alturaVisivel;
 
   const startY = useRef(0);
 
   function mudarEtapa(novaEtapa) {
 
-  const novaAltura = {
-    1: 220,
-    2: 450,
-    3: 550,
-  }[novaEtapa];
+  const novaAltura = alturas[novaEtapa];
 
-  Animated.timing(fadeAnim, {
-    toValue: 0,
-    duration: 600,
-    useNativeDriver: true,
-  }).start(() => {
+    Animated.timing(fadeAnim, {
+      toValue: 0,
+      duration: 600,
+      easing: Easing.out(Easing.cubic),
+      useNativeDriver: true,
+    }).start(() => {
 
-    setEtapa(novaEtapa);
+      setEtapa(novaEtapa);
 
     translateY.setValue(0);
 
@@ -101,11 +101,13 @@ const fechadoY = alturaAnim._value - 50;
       Animated.timing(alturaAnim, {
         toValue: novaAltura,
         duration: 800,
+        easing: Easing.out(Easing.cubic),
         useNativeDriver: false,
       }),
       Animated.timing(fadeAnim, {
         toValue: 1,
         duration: 400,
+        easing: Easing.out(Easing.cubic),
         useNativeDriver: true,
       }),
     ]).start();
@@ -141,11 +143,12 @@ const fechadoY = alturaAnim._value - 50;
 
     onPanResponderRelease: (_, gesture) => {
 
-      if (gesture.dy > 80) {
+      if (gesture.dy > 80 || gesture.vy > 1.2) {
 
         Animated.timing(translateY, {
           toValue: fechadoY,
-          duration: 200,
+          duration: 250,
+          easing: Easing.out(Easing.cubic),
           useNativeDriver: true,
         }).start();
 
@@ -153,7 +156,8 @@ const fechadoY = alturaAnim._value - 50;
 
         Animated.timing(translateY, {
           toValue: 0,
-          duration: 200,
+          duration: 250,
+          easing: Easing.out(Easing.cubic),
           useNativeDriver: true,
         }).start();
 
@@ -206,7 +210,7 @@ const fechadoY = alturaAnim._value - 50;
         ]}
       >
 
-        <View style={styles.dragHandle} />
+        <View style={styles.dragHandle}/>
 
         <Animated.View style={{ opacity: fadeAnim, width: '100%', alignItems: 'center' }}>
 

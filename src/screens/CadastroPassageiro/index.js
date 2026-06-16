@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Alert,
   ScrollView,
-  ImageBackground,
+  Image,
 } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
@@ -102,185 +102,183 @@ export default function CadastroPassageiro({ navigation }) {
 
   return (
 
-    <ImageBackground
-      source={require('../../../assets/backgroundCadastroGoTogether.png')}
-      style={styles.container}
-      resizeMode="cover"
-    >
+    <View style={styles.container}>
 
-      <View style={styles.overlay}>
+      <Image
+        source={require('../../../assets/backgroundCadastroGoTogether.png')}
+        style={styles.backgroundImage}
+        resizeMode="cover"
+      />
 
-        <ScrollView
-          contentContainerStyle={{ paddingBottom: 30 }}
-          showsVerticalScrollIndicator={false}
-        >
+      <ScrollView
+        style={styles.overlay}
+        contentContainerStyle={{ paddingBottom: 30 }}
+        showsVerticalScrollIndicator={false}
+      >
 
-          <Text style={styles.title}>
-            Vamos começar?
-          </Text>
+        <Text style={styles.title}>
+          Vamos começar?
+        </Text>
 
-          <Text style={styles.subtitle}>
-            Preencha seus dados:
-          </Text>
+        <Text style={styles.subtitle}>
+          Preencha seus dados:
+        </Text>
+
+        <TextInput
+          style={styles.input}
+          placeholder="Nome Completo"
+          placeholderTextColor="#7D9BE6"
+          value={nomeCompletoPassageiro}
+          onChangeText={setNomeCompletoPassageiro}
+        />
+
+        <TextInput
+          style={styles.input}
+          placeholder="CPF"
+          placeholderTextColor="#7D9BE6"
+          value={cpfPassageiro}
+          onChangeText={setCpfPassageiro}
+        />
+
+        <TextInput
+          style={styles.input}
+          placeholder="Telefone"
+          placeholderTextColor="#7D9BE6"
+          value={telefonePassageiro}
+          onChangeText={setTelefonePassageiro}
+        />
+
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          placeholderTextColor="#7D9BE6"
+          value={emailPassageiro}
+          onChangeText={setEmailPassageiro}
+        />
+
+        <TextInput
+          style={styles.input}
+          placeholder="Rua"
+          placeholderTextColor="#7D9BE6"
+          value={ruaPassageiro}
+          onChangeText={setRuaPassageiro}
+        />
+
+        <TextInput
+          style={styles.input}
+          placeholder="Complemento"
+          placeholderTextColor="#7D9BE6"
+          value={complementoEnderecoPassageiro}
+          onChangeText={setComplementoEnderecoPassageiro}
+        />
+
+        <TextInput
+          style={styles.input}
+          placeholder="Número"
+          placeholderTextColor="#7D9BE6"
+          value={numeroEnderecoPassageiro}
+          onChangeText={setNumeroEnderecoPassageiro}
+        />
+
+        <TextInput
+          style={styles.input}
+          placeholder="Bairro"
+          placeholderTextColor="#7D9BE6"
+          value={bairroPassageiro}
+          onChangeText={setBairroPassageiro}
+        />
+
+        <TextInput
+          style={styles.input}
+          placeholder="Cidade"
+          placeholderTextColor="#7D9BE6"
+          value={cidadePassageiro}
+          onChangeText={setCidadePassageiro}
+        />
+
+        <TextInput
+          style={styles.input}
+          placeholder="Estado"
+          placeholderTextColor="#7D9BE6"
+          value={estadoPassageiro}
+          onChangeText={setEstadoPassageiro}
+        />
+
+        <TextInput
+          style={styles.input}
+          placeholder="CEP"
+          placeholderTextColor="#7D9BE6"
+          value={cepPassageiro}
+          onChangeText={setCepPassageiro}
+        />
+
+        <TextInput
+          style={styles.input}
+          placeholder="Data de Nascimento"
+          placeholderTextColor="#7D9BE6"
+          value={dataNascimentoPassageiro}
+          onChangeText={setDataNascimentoPassageiro}
+        />
+
+        <View style={styles.inputContainer}>
 
           <TextInput
-            style={styles.input}
-            placeholder="Nome Completo"
+            style={styles.inputSenha}
+            placeholder="Senha"
             placeholderTextColor="#7D9BE6"
-            value={nomeCompletoPassageiro}
-            onChangeText={setNomeCompletoPassageiro}
+            value={senhaPassageiro}
+            onChangeText={setSenhaPassageiro}
+            secureTextEntry={!showPassword}
           />
-
-          <TextInput
-            style={styles.input}
-            placeholder="CPF"
-            placeholderTextColor="#7D9BE6"
-            value={cpfPassageiro}
-            onChangeText={setCpfPassageiro}
-          />
-
-          <TextInput
-            style={styles.input}
-            placeholder="Telefone"
-            placeholderTextColor="#7D9BE6"
-            value={telefonePassageiro}
-            onChangeText={setTelefonePassageiro}
-          />
-
-          <TextInput
-            style={styles.input}
-            placeholder="Email"
-            placeholderTextColor="#7D9BE6"
-            value={emailPassageiro}
-            onChangeText={setEmailPassageiro}
-          />
-
-          <TextInput
-            style={styles.input}
-            placeholder="Rua"
-            placeholderTextColor="#7D9BE6"
-            value={ruaPassageiro}
-            onChangeText={setRuaPassageiro}
-          />
-
-          <TextInput
-            style={styles.input}
-            placeholder="Complemento"
-            placeholderTextColor="#7D9BE6"
-            value={complementoEnderecoPassageiro}
-            onChangeText={setComplementoEnderecoPassageiro}
-          />
-
-          <TextInput
-            style={styles.input}
-            placeholder="Número"
-            placeholderTextColor="#7D9BE6"
-            value={numeroEnderecoPassageiro}
-            onChangeText={setNumeroEnderecoPassageiro}
-          />
-
-          <TextInput
-            style={styles.input}
-            placeholder="Bairro"
-            placeholderTextColor="#7D9BE6"
-            value={bairroPassageiro}
-            onChangeText={setBairroPassageiro}
-          />
-
-          <TextInput
-            style={styles.input}
-            placeholder="Cidade"
-            placeholderTextColor="#7D9BE6"
-            value={cidadePassageiro}
-            onChangeText={setCidadePassageiro}
-          />
-
-          <TextInput
-            style={styles.input}
-            placeholder="Estado"
-            placeholderTextColor="#7D9BE6"
-            value={estadoPassageiro}
-            onChangeText={setEstadoPassageiro}
-          />
-
-          <TextInput
-            style={styles.input}
-            placeholder="CEP"
-            placeholderTextColor="#7D9BE6"
-            value={cepPassageiro}
-            onChangeText={setCepPassageiro}
-          />
-
-          <TextInput
-            style={styles.input}
-            placeholder="Data de Nascimento"
-            placeholderTextColor="#7D9BE6"
-            value={dataNascimentoPassageiro}
-            onChangeText={setDataNascimentoPassageiro}
-          />
-
-          <View style={styles.inputContainer}>
-
-            <TextInput
-              style={styles.inputSenha}
-              placeholder="Senha"
-              placeholderTextColor="#7D9BE6"
-              value={senhaPassageiro}
-              onChangeText={setSenhaPassageiro}
-              secureTextEntry={!showPassword}
-            />
-
-            <TouchableOpacity
-              onPress={() => setShowPassword(!showPassword)}
-            >
-
-              <Ionicons
-                name={showPassword ? 'eye-off-outline' : 'eye-outline'}
-                size={24}
-                color="#6C92E6"
-              />
-
-            </TouchableOpacity>
-
-          </View>
 
           <TouchableOpacity
-            style={styles.button}
-            onPress={cadastrar}
+            onPress={() => setShowPassword(!showPassword)}
           >
 
-            <Text style={styles.buttonText}>
-              Cadastrar
+            <Ionicons
+              name={showPassword ? 'eye-off-outline' : 'eye-outline'}
+              size={24}
+              color="#6C92E6"
+            />
+
+          </TouchableOpacity>
+
+        </View>
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={cadastrar}
+        >
+
+          <Text style={styles.buttonText}>
+            Cadastrar
+          </Text>
+
+        </TouchableOpacity>
+
+        <View style={styles.containerLogar}>
+
+          <Text style={styles.textLogar}>
+            Já tem uma conta?
+          </Text>
+
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('LoginPassageiro')
+            }
+          >
+
+            <Text style={styles.logarText}>
+              Entrar
             </Text>
 
           </TouchableOpacity>
 
-          <View style={styles.containerLogar}>
+        </View>
 
-            <Text style={styles.textLogar}>
-              Já tem uma conta?
-            </Text>
+      </ScrollView>
 
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate('LoginPassageiro')
-              }
-            >
-
-              <Text style={styles.logarText}>
-                Entrar
-              </Text>
-
-            </TouchableOpacity>
-
-          </View>
-
-        </ScrollView>
-
-      </View>
-
-    </ImageBackground>
+    </View>
 
   );
-
 }

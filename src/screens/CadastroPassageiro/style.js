@@ -6,12 +6,6 @@ export default StyleSheet.create({
     flex: 1,
   },
 
-  overlay: {
-    flex: 1,
-    paddingHorizontal: 25,
-    paddingTop: 150,
-  },
-
   logo: {
     fontSize: 34,
     fontWeight: 'bold',
@@ -124,6 +118,20 @@ export default StyleSheet.create({
     color: '#468B5B',
     marginLeft: 215,
     marginTop: -48,
+  },
+
+  backgroundImage: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+
+  overlay: {
+    flex: 1,
+    paddingHorizontal: 25,
+    paddingTop: 150,
   },
 
 });

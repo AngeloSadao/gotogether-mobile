@@ -16,15 +16,6 @@ export default function StackRoutes() {
       initialRouteName="Inicial"
       screenOptions={{
         headerShown: false,
-        transitionSpec: {
-          open: { animation: 'timing', config: { duration: 400 } },
-          close: { animation: 'timing', config: { duration: 400 } },
-        },
-        cardStyleInterpolator: ({ current }) => ({
-          cardStyle: {
-            opacity: current.progress,
-          },
-        }),
       }}
     > 
 
