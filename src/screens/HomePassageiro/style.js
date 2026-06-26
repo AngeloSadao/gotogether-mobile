@@ -54,11 +54,14 @@ export default StyleSheet.create({
 
   // PAINEL - ETAPA 1
   title: {
-    marginTop: -30,
+    lineHeight: 40,
     fontSize: 64,
-    marginBottom: -50,
     fontFamily: 'Gurajada',
     userSelect: 'none',
+  },
+
+  titleNome: {
+    color: '#435E91',
   },
 
   text: {
@@ -150,6 +153,30 @@ export default StyleSheet.create({
 
   buttonText: {
     color: '#fff',
+  },
+
+  // SUGESTÕES DE AUTOCOMPLETE
+  sugestaoLista: {
+    width: '100%',
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 8,
+    marginBottom: 4,
+    maxHeight: 120,
+    overflow: 'hidden',
+  },
+
+  sugestaoItem: {
+    padding: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
+  },
+
+  sugestaoTexto: {
+    fontSize: 13,
+    fontFamily: 'Gurajada',
+    color: '#333',
   },
 
 });

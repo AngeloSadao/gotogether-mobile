@@ -22,18 +22,34 @@ export default function LoginPassageiro({navigation}) {
   const [tipoUsuario, setTipoUsuario] =
   useState('passageiro');
 
-  function logar() {
-    /*if (!email || !senha) {
-      return Alert.alert('Preencha todos os campos');
-    }*/
-
-    Alert.alert('Passageiro cadastrado!');
-
-    setEmail('');
-    setSenha('');
-
-    navigation.navigate('HomePassageiro');
+  async function logar() {
+  if (!email || !senha) {
+    return window.alert('Preencha todos os campos');
   }
+
+  try {
+    const response = await fetch('http://localhost/appTcc/loginPassageiro.php', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, senha }),
+    });
+
+    const dados = await response.json();
+
+
+    if (dados.sucesso) {
+      navigation.navigate('HomePassageiro', { nome: dados.nome });
+    } else {
+      window.alert(dados.mensagem);
+    }
+
+  } catch (error) {
+    window.alert('Erro: Não foi possível conectar ao servidor');
+  }
+}
 
   return (
     <View style={styles.container}>

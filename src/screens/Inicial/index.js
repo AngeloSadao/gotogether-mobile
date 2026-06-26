@@ -64,7 +64,7 @@ export default function Inicial({navigation}) {
       </TouchableOpacity>
 
       <TouchableOpacity 
-      onPress={() => navigation.navigate('Cadastro')}
+      onPress={() => navigation.navigate('CadastroMotorista')}
       style={styles.buttonMotorista}>
         <View style={{flexDirection: 'row',}}>
           <View style={styles.backgroundIconMotorista}>

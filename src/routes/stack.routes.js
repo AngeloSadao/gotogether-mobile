@@ -3,10 +3,12 @@ import React from 'react';
 import Inicial from '../screens/Inicial';
 import CadastroPassageiro from '../screens/CadastroPassageiro';;
 import LoginPassageiro from '../screens/LoginPassageiro';
+import EditarPerfilMotorista from '../screens/EditarPerfilMotorista';
 
 import DrawerRoutes from './drawer.routes';
 
 import { createStackNavigator } from '@react-navigation/stack';
+import CadastroMotorista from '../screens/CadastroMotorista';
 
 const Stack = createStackNavigator();
 
@@ -32,6 +34,12 @@ export default function StackRoutes() {
       />
 
       <Stack.Screen
+        name="CadastroMotorista"
+        component={CadastroMotorista}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
         name="LoginPassageiro"
         component={LoginPassageiro}
         options={{ headerShown: false }}
@@ -41,6 +49,12 @@ export default function StackRoutes() {
         name="HomePassageiro"
         component={DrawerRoutes}
         headerShown
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="EditarPerfilMotorista"
+        component={EditarPerfilMotorista}
         options={{ headerShown: false }}
       />
 

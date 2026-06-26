@@ -14,7 +14,7 @@ import { Ionicons } from '@expo/vector-icons';
 import styles from './style';
 import { ImageBackground } from 'react-native-web';
 
-export default function CadastroPassageiro({ navigation }) {
+export default function CadastroMotorista({ navigation }) {
 
   const [nomeCompletoPassageiro, setNomeCompletoPassageiro] = useState('');
   const [cpfPassageiro, setCpfPassageiro] = useState('');
@@ -37,27 +37,6 @@ export default function CadastroPassageiro({ navigation }) {
     if (numeros.length <= 2) return numeros;
     if (numeros.length <= 4) return `${numeros.slice(0,2)}/${numeros.slice(2)}`;
     return `${numeros.slice(0,2)}/${numeros.slice(2,4)}/${numeros.slice(4,8)}`;
-  }
-
-  function mascaraTelefone(texto) {
-    const numeros = texto.replace(/\D/g, '');
-    if (numeros.length <= 2) return `(${numeros}`;
-    if (numeros.length <= 7) return `(${numeros.slice(0,2)}) ${numeros.slice(2)}`;
-    return `(${numeros.slice(0,2)}) ${numeros.slice(2,7)}-${numeros.slice(7,11)}`;
-  }
-
-  function mascaraCPF(texto) {
-    const numeros = texto.replace(/\D/g, '');
-    if (numeros.length <= 3) return numeros;
-    if (numeros.length <= 6) return `${numeros.slice(0,3)}.${numeros.slice(3)}`;
-    if (numeros.length <= 9) return `${numeros.slice(0,3)}.${numeros.slice(3,6)}.${numeros.slice(6)}`;
-    return `${numeros.slice(0,3)}.${numeros.slice(3,6)}.${numeros.slice(6,9)}-${numeros.slice(9,11)}`;
-  }
-
-  function mascaraCEP(texto) {
-    const numeros = texto.replace(/\D/g, '');
-    if (numeros.length <= 5) return numeros;
-    return `${numeros.slice(0,5)}-${numeros.slice(5,8)}`;
   }
 
   async function cadastrar() {
@@ -83,9 +62,6 @@ export default function CadastroPassageiro({ navigation }) {
 
     try {
 
-      const [dia, mes, ano] = dataNascimentoPassageiro.split('/');
-      const dataFormatada = `${ano}-${mes}-${dia}`;
-
       const response = await fetch(
         'http://localhost/appTcc/salvarPassageiro.php',
         {
@@ -108,7 +84,7 @@ export default function CadastroPassageiro({ navigation }) {
             cidadePassageiro,
             estadoPassageiro,
             cepPassageiro,
-            dataNascimentoPassageiro: dataFormatada,
+            dataNascimentoPassageiro,
             senhaPassageiro
 
           })
@@ -186,7 +162,7 @@ export default function CadastroPassageiro({ navigation }) {
           placeholder="CPF"
           placeholderTextColor="#7D9BE6"
           value={cpfPassageiro}
-          onChangeText={(texto) => setCpfPassageiro(mascaraCPF(texto))}
+          onChangeText={setCpfPassageiro}
         />
 
         <TextInput
@@ -194,7 +170,7 @@ export default function CadastroPassageiro({ navigation }) {
           placeholder="Telefone"
           placeholderTextColor="#7D9BE6"
           value={telefonePassageiro}
-          onChangeText={(texto) => setTelefonePassageiro(mascaraTelefone(texto))}
+          onChangeText={setTelefonePassageiro}
         />
 
         <TextInput
@@ -258,12 +234,12 @@ export default function CadastroPassageiro({ navigation }) {
           placeholder="CEP"
           placeholderTextColor="#7D9BE6"
           value={cepPassageiro}
-          onChangeText={(texto) => setCepPassageiro(mascaraCEP(texto))}
+          onChangeText={setCepPassageiro}
         />
 
         <TextInput
           style={styles.input}
-          placeholder="(DD/MM/AAAA)"
+          placeholder="Data de Nascimento"
           placeholderTextColor="#7D9BE6"
           value={dataNascimentoPassageiro}
           onChangeText={(texto) => setDataNascimentoPassageiro(mascaraData(texto))}

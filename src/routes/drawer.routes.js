@@ -7,16 +7,21 @@ import CustomDrawer from '../components/CustomDrawer';
 
 const Drawer = createDrawerNavigator();
 
-export default function DrawerRoutes() {
+export default function DrawerRoutes({ route }) {
+
+  const nome = route.params?.nome?.split(' ')[0] ?? 'Usuário';
+
   return (
     <Drawer.Navigator
       drawerContent={(props) => (
-        <CustomDrawer {...props} />
+        <CustomDrawer {...props} nome={nome} />
       )}
       screenOptions={{
         drawerStyle: {
-          backgroundColor: '#5e0303',
-          width: 260,
+          width: 280,
+          backgroundColor: '#000',
+          borderColor: '#435E91',
+          borderRightWidth: 30,
         },
       }}
     >
@@ -24,6 +29,7 @@ export default function DrawerRoutes() {
         name="HomePassageiro"
         component={HomePassageiro}
         options={{headerShown: false}}
+        initialParams={{ nome }}
       />
 
     </Drawer.Navigator>
