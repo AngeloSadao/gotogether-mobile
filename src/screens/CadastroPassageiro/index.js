@@ -156,7 +156,7 @@ export default function CadastroPassageiro({ navigation }) {
       <ImageBackground
         source={require('../../../assets/backgroundCadastroGoTogether.png')}
         style={styles.backgroundImage}
-        resizeMode='cover'
+        resizeMode="stretch"
       >
 
       <ScrollView

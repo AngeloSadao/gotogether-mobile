@@ -52,21 +52,28 @@ function AtualizarMapa({ origem, destino }) {
   const map = useMap();
 
   useEffect(() => {
-    if (origem && destino) {
-      map.fitBounds([origem, destino], { padding: [50, 50] });
-    } else if (origem) {
-      map.setView(origem, 14);
-    }
-  }, [origem, destino]);
+  if (origem && destino) {
+    map.flyToBounds([origem, destino], {
+      padding: [50, 50],
+      duration: 1.2, // duração da animação em segundos
+    });
+  } else if (origem) {
+    map.flyTo(origem, 14, {
+      duration: 1.2,
+    });
+  }
+}, [origem, destino]);
 
   return null;
 }
+
+
 export default function HomePassageiro({ route }) {
   const nome = route.params?.nome ?? 'Usuário';
 
   const [origem, setOrigem] = useState('');
   const [destino, setDestino] = useState('');
-  const [coordMotorista, setCoordMotorista] = useState([-24.4979, -47.8449]); // posição simulada
+  const [coordMotorista, setCoordMotorista] = useState(null); // posição simulada
 
   const [preferencias, setPreferencias] = useState({
     motoristaMasculino: false,
@@ -117,6 +124,8 @@ export default function HomePassageiro({ route }) {
   const [sugestoesDestino, setSugestoesDestino] = useState([]);
   const [coordOrigem, setCoordOrigem] = useState(null);
   const [coordDestino, setCoordDestino] = useState(null);
+  const selecionouOrigem = useRef(false);
+  const selecionouDestino = useRef(false);
   const [rota, setRota] = useState([]);
 
   async function buscarSugestoes(texto, tipo) {
@@ -140,19 +149,30 @@ export default function HomePassageiro({ route }) {
     }
   }
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      buscarSugestoes(origemTexto, 'origem');
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, [origemTexto]);
+useEffect(() => {
+  if (selecionouOrigem.current) {
+    selecionouOrigem.current = false;
+    return;
+  }
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      buscarSugestoes(destinoTexto, 'destino');
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, [destinoTexto]);
+  const timer = setTimeout(() => {
+    buscarSugestoes(origemTexto, 'origem');
+  }, 1000);
+  return () => clearTimeout(timer);
+}, [origemTexto]);
+
+useEffect(() => {
+  if (selecionouDestino.current) {
+    selecionouDestino.current = false;
+    return;
+  }
+
+  const timer = setTimeout(() => {
+    buscarSugestoes(destinoTexto, 'destino');
+  }, 1000);
+  return () => clearTimeout(timer);
+}, [destinoTexto]);
+
 
   async function calcularRota(cOrigem, cDestino) {
     if (!cOrigem || !cDestino) return;
@@ -184,19 +204,22 @@ export default function HomePassageiro({ route }) {
   }, [coordOrigem, coordDestino]);
 
   useEffect(() => {
-    if (rota.length === 0) return;
+    if (rota.length === 0) {
+      setCoordMotorista(null);
+      return;
+    }
 
     let indice = 0;
 
     const intervalo = setInterval(() => {
       if (indice >= rota.length) {
         clearInterval(intervalo);
-      return;
+        return;
       }
 
       setCoordMotorista(rota[indice]);
       indice++;
-    }, 200); // velocidade: menor = mais rápido
+    }, 180); // velocidade: menor = mais rápido
 
   return () => clearInterval(intervalo);
 }, [rota]);
@@ -386,6 +409,7 @@ export default function HomePassageiro({ route }) {
                           parseFloat(item.lat),
                           parseFloat(item.lon),
                         ];
+                        selecionouOrigem.current = true;
                         setCoordOrigem(coord);
                         setOrigem(item.display_name);
                         setOrigemTexto(item.display_name);
@@ -422,6 +446,7 @@ export default function HomePassageiro({ route }) {
                           parseFloat(item.lat),
                           parseFloat(item.lon),
                         ];
+                        selecionouDestino.current = true;
                         setCoordDestino(coord);
                         setDestino(item.display_name);
                         setDestinoTexto(item.display_name);

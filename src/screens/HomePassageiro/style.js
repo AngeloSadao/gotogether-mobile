@@ -42,6 +42,18 @@ export default StyleSheet.create({
     borderColor: '#435E91',
     padding: 20,
     alignItems: 'center',
+
+    // Sombra (iOS)
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: -4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 12,
+
+    // Sombra (Android)
+    elevation: 10,
+
+    // Sombra (Web — react-native-web costuma precisar disso)
+    boxShadow: '0px -4px 12px rgba(0, 0, 0, 0.15)',
   },
 
   dragHandle: {
@@ -54,7 +66,7 @@ export default StyleSheet.create({
 
   // PAINEL - ETAPA 1
   title: {
-    lineHeight: 40,
+    lineHeight: 45,
     fontSize: 64,
     fontFamily: 'Gurajada',
     userSelect: 'none',
