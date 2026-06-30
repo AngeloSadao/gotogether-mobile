@@ -18,7 +18,7 @@ export default function CustomDrawer({nome, ...props}) {
 
         <Image
           style={styles.fotoPerfil}
-          source={require('../../../assets/RamonPerfil.png')}
+          source={require('../../../assets/userPerfil.png')}
         />
 
         <Text style={styles.textNomeUsuario}>

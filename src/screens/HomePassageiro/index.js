@@ -39,6 +39,14 @@ const icon = new L.Icon({
   iconAnchor: [12, 41],
 });
 
+// ÍCONE DO MOTORISTA (CARRINHO)
+const carIcon = new L.divIcon({
+  html: '<div style="font-size: 30px; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">🚗</div>',
+  className: 'car-icon-wrapper',
+  iconSize: [30, 30],
+  iconAnchor: [15, 15],
+});
+
 // COMPONENTE QUE ATUALIZA A VISTA DO MAPA
 function AtualizarMapa({ origem, destino }) {
   const map = useMap();
@@ -58,6 +66,7 @@ export default function HomePassageiro({ route }) {
 
   const [origem, setOrigem] = useState('');
   const [destino, setDestino] = useState('');
+  const [coordMotorista, setCoordMotorista] = useState([-24.4979, -47.8449]); // posição simulada
 
   const [preferencias, setPreferencias] = useState({
     motoristaMasculino: false,
@@ -174,6 +183,24 @@ export default function HomePassageiro({ route }) {
     }
   }, [coordOrigem, coordDestino]);
 
+  useEffect(() => {
+    if (rota.length === 0) return;
+
+    let indice = 0;
+
+    const intervalo = setInterval(() => {
+      if (indice >= rota.length) {
+        clearInterval(intervalo);
+      return;
+      }
+
+      setCoordMotorista(rota[indice]);
+      indice++;
+    }, 200); // velocidade: menor = mais rápido
+
+  return () => clearInterval(intervalo);
+}, [rota]);
+
   function mudarEtapa(novaEtapa) {
     const novaAltura = alturas[novaEtapa];
 
@@ -269,6 +296,12 @@ export default function HomePassageiro({ route }) {
           {coordDestino && (
             <Marker position={coordDestino} icon={icon}>
               <Popup>Destino</Popup>
+            </Marker>
+          )}
+
+          {coordMotorista && (
+            <Marker position={coordMotorista} icon={carIcon}>
+              <Popup>Motorista</Popup>
             </Marker>
           )}
 
